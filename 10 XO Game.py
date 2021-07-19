@@ -8,7 +8,6 @@ from tkinter.font import Font
 root = Tk()
 # Give a title name
 root.title("XO Game")
-
 # Make a list that will be used to know how win
 list_XO = [
     [0, 0, 0],
@@ -29,7 +28,7 @@ box_font = Font(
 turn = "O"
 colour = "#D1E3D1"
 # Make a label with some information
-label = Label(root, text="Player_1 (" + turn + ")", padx=30, pady=20, font=title_font).grid(row=0, column=1)
+label = Label(root, text="Player_1 (" + turn + ")", padx=30, pady=20, font=title_font).grid(row=0, column=0,columnspan = 3 )
 
 
 # Function to check if there are a winner
@@ -39,13 +38,13 @@ def win(number):
         pass
     elif number == 1:
         # O is win in this case
-        label_win = Label(root, text="The winner is O", padx=30, pady=20, bg="#D1E3D1",font=title_font).grid(row=0, column=1)
+        label_win = Label(root, text="The winner is O", padx=30, pady=20, bg="#D1E3D1",font=title_font).grid(row=0, column=0,columnspan = 3)
     elif number == 2:
         # X is win in this case
-        label_win = Label(root, text="The winner is X", padx=30, pady=20, bg="#D1E3D1",font=title_font).grid(row=0, column=1)
+        label_win = Label(root, text="The winner is X", padx=30, pady=20, bg="#D1E3D1",font=title_font).grid(row=0, column=0,columnspan = 3)
     elif number == -1:
         # no one win
-        label_win = Label(root, text="NO BODY WIN", padx=30, pady=20, bg="#d93838",font=title_font).grid(row=0, column=1)
+        label_win = Label(root, text="NO BODY WIN", padx=30, pady=20, bg="#d93838",font=title_font).grid(row=0, column=0,columnspan = 3)
 # This function is made to make the changes that happen
 def XO(number):
     # Make the value as global
@@ -92,11 +91,11 @@ def XO(number):
     if turn == "X":
         turn = "O"
         colour = "#D1E3D1"
-        label = Label(root, text="Player_1 (" + turn + ")", padx=30, pady=20,font=title_font).grid(row=0, column=1)
+        label = Label(root, text="Player_1 (" + turn + ")", padx=30, pady=20,font=title_font).grid(row=0, column=0,columnspan = 3)
     else:
         turn = "X"
         colour = "#d93838"
-        label = Label(root, text="Player_2 (" + turn + ")", padx=30, pady=20,font=title_font).grid(row=0, column=1)
+        label = Label(root, text="Player_2 (" + turn + ")", padx=30, pady=20,font=title_font).grid(row=0, column=0,columnspan = 3)
 
     # Check if there are a win
     board_line = []
