@@ -9,8 +9,8 @@ root = Tk()
 # Give a title name
 root.title("XO Game")
 # add icon
-
 root.iconbitmap("xo_game2.ico")
+
 # Make a list that will be used to know how win
 list_XO = [
     [0, 0, 0],
@@ -31,13 +31,43 @@ box_font = Font(
 turn = "O"
 colour = "#D1E3D1"
 # Make a label with some information
-label = Label(root, text="Player_1 (" + turn + ")", padx=30, pady=20, font=title_font).grid(row=0, column=0,
+label = Label(root, text="Player_1 (" + turn + ")", padx=75, pady=20, font=title_font).grid(row=0, column=0,
                                                                                             columnspan=3)
 
 
 # renew the game
 def again():
-    pass
+    global check
+    global colour
+    global list_XO
+    global turn
+    # renew the list
+    list_XO = [
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0]
+]
+    # renew the buttons
+    button1 = Button(root, text=" # ", padx=30, pady=30, font=box_font, command=lambda: XO(1)).grid(row=1, column=0)
+    button2 = Button(root, text=" # ", padx=30, pady=30, font=box_font, command=lambda: XO(2)).grid(row=1, column=1)
+    button3 = Button(root, text=" # ", padx=30, pady=30, font=box_font, command=lambda: XO(3)).grid(row=1, column=2)
+
+    button4 = Button(root, text=" # ", padx=30, pady=30, font=box_font, command=lambda: XO(4)).grid(row=2, column=0)
+    button5 = Button(root, text=" # ", padx=30, pady=30, font=box_font, command=lambda: XO(5)).grid(row=2, column=1)
+    button6 = Button(root, text=" # ", padx=30, pady=30, font=box_font, command=lambda: XO(6)).grid(row=2, column=2)
+
+    button7 = Button(root, text=" # ", padx=30, pady=30, font=box_font, command=lambda: XO(7)).grid(row=3, column=0)
+    button8 = Button(root, text=" # ", padx=30, pady=30, font=box_font, command=lambda: XO(8)).grid(row=3, column=1)
+    button9 = Button(root, text=" # ", padx=30, pady=30, font=box_font, command=lambda: XO(9)).grid(row=3, column=2)
+
+    # Make check as False
+    check = False
+    # renew the win par
+    turn = "O"
+    colour = "#D1E3D1"
+    # Make a label with some information
+    label = Label(root, text="Player_1 (" + turn + ")", padx=75, pady=20, font=title_font).grid(row=0, column=0,
+                                                                                                columnspan=3)
 
 
 # Function to check if there are a winner
@@ -50,19 +80,33 @@ def win(number):
         check = True
         # O is win in this case
         label_win = Label(root, text="The winner is O", padx=60, pady=20, bg="#D1E3D1", font=title_font).grid(row=0,
-                                                                                                              column=0,
+                                                                                                             column=0,
                                                                                                               columnspan=3)
+        renew_button = Button(root, text="Play Again!", padx=73, pady=20, font=title_font,
+                              command=lambda: again(),bg = "#ebb973").grid(row=4,
+                                                            column=0,
+                                                            columnspan=3)
+
     elif number == 2:
         check = True
         # X is win in this case
-        label_win = Label(root, text="The winner is X", padx=60, pady=20, bg="#D1E3D1", font=title_font).grid(row=0,
+        label_win = Label(root, text="The winner is X", padx=60, pady=20, bg="#65c5f7", font=title_font).grid(row=0,
                                                                                                               column=0,
                                                                                                               columnspan=3)
+        renew_button = Button(root, text="Play Again!", padx=73, pady=20, font=title_font,
+                              command=lambda: again(),bg = "#ebb973").grid(row=4,
+                                                            column=0,
+                                                            columnspan=3)
+
     elif number == -1:
         # no one win
-        label_win = Label(root, text="NO BODY WIN", padx=60, pady=20, bg="#d93838", font=title_font).grid(row=0,
+        label_win = Label(root, text="NO BODY WIN", padx=73, pady=20, bg="#d93838", font=title_font).grid(row=0,
                                                                                                           column=0,
                                                                                                           columnspan=3)
+        renew_button = Button(root, text="Play Again!", padx=73, pady=20, font=title_font,
+                              command=lambda: again(),bg = "#ebb973").grid(row=4,
+                                                            column=0,
+                                                            columnspan=3)
 
 
 # This function is made to make the changes that happen
@@ -118,12 +162,12 @@ def XO(number):
         if turn == "X":
             turn = "O"
             colour = "#D1E3D1"
-            label = Label(root, text="Player_1 (" + turn + ")", padx=30, pady=20, font=title_font).grid(row=0, column=0,
+            label = Label(root, text="Player_1 (" + turn + ")", padx=75, pady=20, font=title_font).grid(row=0, column=0,
                                                                                                         columnspan=3)
         else:
             turn = "X"
-            colour = "#d93838"
-            label = Label(root, text="Player_2 (" + turn + ")", padx=30, pady=20, font=title_font).grid(row=0, column=0,
+            colour = "#65c5f7"
+            label = Label(root, text="Player_2 (" + turn + ")", padx=75, pady=20, font=title_font).grid(row=0, column=0,
                                                                                                         columnspan=3)
 
         # Check if there are a win
@@ -190,7 +234,4 @@ button7 = Button(root, text=" # ", padx=30, pady=30, font=box_font, command=lamb
 button8 = Button(root, text=" # ", padx=30, pady=30, font=box_font, command=lambda: XO(8)).grid(row=3, column=1)
 button9 = Button(root, text=" # ", padx=30, pady=30, font=box_font, command=lambda: XO(9)).grid(row=3, column=2)
 
-renew_button = Button(root, text="Play Again!", padx=73, pady=20, font=title_font, command=lambda: again()).grid(row=4,
-                                                                                                                 column=0,
-                                                                                                                 columnspan=3)
 root.mainloop()
