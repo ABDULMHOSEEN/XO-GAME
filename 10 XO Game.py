@@ -37,6 +37,7 @@ label = Label(root, text="Player_1 (" + turn + ")", padx=75, pady=20, font=title
 
 # renew the game
 def again():
+    root.geometry("270x350")
     global check
     global colour
     global list_XO
@@ -77,6 +78,7 @@ def win(number):
     if number == 0:
         pass
     elif number == 1:
+        root.geometry("270x445")
         check = True
         # O is win in this case
         label_win = Label(root, text="The winner is O", padx=60, pady=20, bg="#D1E3D1", font=title_font).grid(row=0,
@@ -88,6 +90,7 @@ def win(number):
                                                             columnspan=3)
 
     elif number == 2:
+        root.geometry("270x445")
         check = True
         # X is win in this case
         label_win = Label(root, text="The winner is X", padx=60, pady=20, bg="#65c5f7", font=title_font).grid(row=0,
@@ -99,6 +102,7 @@ def win(number):
                                                             columnspan=3)
 
     elif number == -1:
+        root.geometry("270x445")
         # no one win
         label_win = Label(root, text="NO BODY WIN", padx=73, pady=20, bg="#d93838", font=title_font).grid(row=0,
                                                                                                           column=0,
