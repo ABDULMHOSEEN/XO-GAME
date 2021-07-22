@@ -3,6 +3,18 @@
 # Fist of all I will import the Tkinter
 from tkinter import *
 from tkinter.font import Font
+import pygame
+
+# for some sound
+
+def sound(number):
+    pygame.mixer.init()
+    if number == 1:
+        pygame.mixer.music.load("lose.mp3")
+        pygame.mixer.music.play(loops=0)
+    elif number == 2:
+        pygame.mixer.music.load("start game.mp3")
+        pygame.mixer.music.play(loops=0)
 
 # make a root
 root = Tk()
@@ -37,6 +49,7 @@ label = Label(root, text="Player_1 (" + turn + ")", padx=75, pady=20, font=title
 
 # renew the game
 def again():
+    sound(2)
     root.geometry("270x350")
     global check
     global colour
@@ -78,6 +91,7 @@ def win(number):
     if number == 0:
         pass
     elif number == 1:
+        sound(1)
         root.geometry("270x445")
         check = True
         # O is win in this case
@@ -90,6 +104,7 @@ def win(number):
                                                             columnspan=3)
 
     elif number == 2:
+        sound(1)
         root.geometry("270x445")
         check = True
         # X is win in this case
@@ -102,6 +117,7 @@ def win(number):
                                                             columnspan=3)
 
     elif number == -1:
+        sound(1)
         root.geometry("270x445")
         # no one win
         label_win = Label(root, text="NO BODY WIN", padx=73, pady=20, bg="#d93838", font=title_font).grid(row=0,
